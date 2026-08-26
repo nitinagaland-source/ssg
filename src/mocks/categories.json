@@ -1,0 +1,82 @@
+[
+  {
+    "id": "cat-textbooks",
+    "name": "Textbooks",
+    "slug": "textbooks",
+    "parentId": null,
+    "icon": "BookOpen",
+    "image": "https://images.unsplash.com/photo-1544716278-ca5e3f4abd8c?w=500&auto=format&fit=crop&q=80",
+    "order": 1,
+    "description": "Prescribed syllabus books for NBSE, CBSE & ICSE schools across Nagaland."
+  },
+  {
+    "id": "cat-notebooks",
+    "name": "Notebooks & Copies",
+    "slug": "notebooks",
+    "parentId": null,
+    "icon": "FileText",
+    "image": "https://images.unsplash.com/photo-1531346878377-a5be20888e57?w=500&auto=format&fit=crop&q=80",
+    "order": 2,
+    "description": "School customized long registers, practical notebooks, and single-line copies."
+  },
+  {
+    "id": "cat-uniforms",
+    "name": "School Uniforms",
+    "slug": "uniforms",
+    "parentId": null,
+    "icon": "Shirt",
+    "image": "https://images.unsplash.com/photo-1596461404969-9ae70f2830c1?w=500&auto=format&fit=crop&q=80",
+    "order": 3,
+    "description": "Tailored school shirts, pleated skirts, trousers, blazers, neckties, and badges."
+  },
+  {
+    "id": "cat-bags",
+    "name": "School Bags",
+    "slug": "bags",
+    "parentId": null,
+    "icon": "Backpack",
+    "image": "https://images.unsplash.com/photo-1553062407-98eeb64c6a62?w=500&auto=format&fit=crop&q=80",
+    "order": 4,
+    "description": "Ergonomic waterproof backpacks, bottle pouches, and durable lunch bags."
+  },
+  {
+    "id": "cat-stationery",
+    "name": "Stationery",
+    "slug": "stationery",
+    "parentId": null,
+    "icon": "PenTool",
+    "image": "https://images.unsplash.com/photo-1583485088034-697b5bc54ccd?w=500&auto=format&fit=crop&q=80",
+    "order": 5,
+    "description": "Geometry boxes, fountain pens, gel pens, exam pads, markers, and glues."
+  },
+  {
+    "id": "cat-art-craft",
+    "name": "Art & Craft",
+    "slug": "art-craft",
+    "parentId": null,
+    "icon": "Palette",
+    "image": "https://images.unsplash.com/photo-1513364776144-60967b0f800f?w=500&auto=format&fit=crop&q=80",
+    "order": 6,
+    "description": "Watercolors, poster colors, cartridge sheets, oil pastels, and modeling clay."
+  },
+  {
+    "id": "cat-sports",
+    "name": "Sports Kits",
+    "slug": "sports",
+    "parentId": null,
+    "icon": "Trophy",
+    "image": "https://images.unsplash.com/photo-1517649763962-0c623266ddc0?w=500&auto=format&fit=crop&q=80",
+    "order": 7,
+    "description": "House sports t-shirts, track pants, white PT shoes, socks, and badminton kits."
+  },
+  {
+    "id": "cat-lab-equipment",
+    "name": "Lab Equipment",
+    "slug": "lab-equipment",
+    "parentId": null,
+    "icon": "FlaskConical",
+    "image": "https://images.unsplash.com/photo-1532094349884-543bc11b234d?w=500&auto=format&fit=crop&q=80",
+    "order": 8,
+    "description": "Dissection kits, chemistry lab aprons, charts, test tubes, and biology record files."
+  }
+]

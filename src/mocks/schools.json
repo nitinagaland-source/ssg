@@ -1,0 +1,90 @@
+[
+  {
+    "id": "don-bosco-panbazar",
+    "name": "Don Bosco School Panbazar",
+    "slug": "don-bosco-panbazar",
+    "city": "Guwahati",
+    "board": "CBSE",
+    "logo": "https://picsum.photos/seed/school-db-ghy/200/200",
+    "classesOffered": ["Class 1", "Class 2", "Class 3", "Class 4", "Class 5", "Class 6", "Class 7", "Class 8", "Class 9", "Class 10", "Class 11", "Class 12"],
+    "availableInShops": ["shop-guwahati-panbazar", "shop-guwahati-gsroad", "shop-guwahati-beltola", "shop-guwahati-maligaon"],
+    "address": "MG Road, Panbazar, Guwahati, Assam 781001"
+  },
+  {
+    "id": "dps-guwahati",
+    "name": "Delhi Public School Guwahati",
+    "slug": "dps-guwahati",
+    "city": "Guwahati",
+    "board": "CBSE",
+    "logo": "https://picsum.photos/seed/school-dps-ghy/200/200",
+    "classesOffered": ["Class 1", "Class 2", "Class 3", "Class 4", "Class 5", "Class 6", "Class 7", "Class 8", "Class 9", "Class 10", "Class 11", "Class 12"],
+    "availableInShops": ["shop-guwahati-panbazar", "shop-guwahati-gsroad", "shop-guwahati-beltola", "shop-guwahati-maligaon"],
+    "address": "NH-37, Ahomgaon, Guwahati, Assam 781035"
+  },
+  {
+    "id": "sanskriti-gurukul",
+    "name": "Sanskriti The Gurukul",
+    "slug": "sanskriti-gurukul",
+    "city": "Guwahati",
+    "board": "CBSE",
+    "logo": "https://picsum.photos/seed/school-stg/200/200",
+    "classesOffered": ["Class 1", "Class 2", "Class 3", "Class 4", "Class 5", "Class 6", "Class 7", "Class 8", "Class 9", "Class 10", "Class 11", "Class 12"],
+    "availableInShops": ["shop-guwahati-panbazar", "shop-guwahati-gsroad", "shop-guwahati-beltola", "shop-guwahati-maligaon"],
+    "address": "Guijan, Lalmati, Guwahati, Assam 781029"
+  },
+  {
+    "id": "st-marys-guwahati",
+    "name": "St. Mary's Higher Secondary School",
+    "slug": "st-marys-guwahati",
+    "city": "Guwahati",
+    "board": "SEBA",
+    "logo": "https://picsum.photos/seed/school-sm-ghy/200/200",
+    "classesOffered": ["Class 1", "Class 2", "Class 3", "Class 4", "Class 5", "Class 6", "Class 7", "Class 8", "Class 9", "Class 10", "Class 11", "Class 12"],
+    "availableInShops": ["shop-guwahati-panbazar", "shop-guwahati-gsroad", "shop-guwahati-beltola", "shop-guwahati-maligaon"],
+    "address": "MC Road, Chenikuthi / Maligaon, Guwahati, Assam 781003"
+  },
+  {
+    "id": "marias-public-school",
+    "name": "Maria's Public School",
+    "slug": "marias-public-school",
+    "city": "Guwahati",
+    "board": "CBSE",
+    "logo": "https://picsum.photos/seed/school-mps-ghy/200/200",
+    "classesOffered": ["Class 1", "Class 2", "Class 3", "Class 4", "Class 5", "Class 6", "Class 7", "Class 8", "Class 9", "Class 10", "Class 11", "Class 12"],
+    "availableInShops": ["shop-guwahati-panbazar", "shop-guwahati-gsroad", "shop-guwahati-beltola", "shop-guwahati-maligaon"],
+    "address": "Birkuchi, Narengi, Guwahati, Assam 781026"
+  },
+  {
+    "id": "holy-child-school",
+    "name": "Holy Child School",
+    "slug": "holy-child-school",
+    "city": "Guwahati",
+    "board": "SEBA",
+    "logo": "https://picsum.photos/seed/school-hc-ghy/200/200",
+    "classesOffered": ["Class 1", "Class 2", "Class 3", "Class 4", "Class 5", "Class 6", "Class 7", "Class 8", "Class 9", "Class 10", "Class 11", "Class 12"],
+    "availableInShops": ["shop-guwahati-panbazar", "shop-guwahati-gsroad", "shop-guwahati-beltola", "shop-guwahati-maligaon"],
+    "address": "Krishna Nagar, Chandmari, Guwahati, Assam 781003"
+  },
+  {
+    "id": "faculty-higher-secondary",
+    "name": "Faculty Higher Secondary School",
+    "slug": "faculty-higher-secondary",
+    "city": "Guwahati",
+    "board": "CBSE",
+    "logo": "https://picsum.photos/seed/school-fhss-ghy/200/200",
+    "classesOffered": ["Class 1", "Class 2", "Class 3", "Class 4", "Class 5", "Class 6", "Class 7", "Class 8", "Class 9", "Class 10", "Class 11", "Class 12"],
+    "availableInShops": ["shop-guwahati-panbazar", "shop-guwahati-gsroad", "shop-guwahati-beltola", "shop-guwahati-maligaon"],
+    "address": "North Guwahati, Guwahati, Assam 781039"
+  },
+  {
+    "id": "army-public-school-narangi",
+    "name": "Army Public School Narangi",
+    "slug": "army-public-school-narangi",
+    "city": "Guwahati",
+    "board": "CBSE",
+    "logo": "https://picsum.photos/seed/school-aps-ghy/200/200",
+    "classesOffered": ["Class 1", "Class 2", "Class 3", "Class 4", "Class 5", "Class 6", "Class 7", "Class 8", "Class 9", "Class 10", "Class 11", "Class 12"],
+    "availableInShops": ["shop-guwahati-panbazar", "shop-guwahati-gsroad", "shop-guwahati-beltola", "shop-guwahati-maligaon"],
+    "address": "Narangi Military Station, Guwahati, Assam 781027"
+  }
+]

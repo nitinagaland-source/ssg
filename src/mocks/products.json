@@ -1,0 +1,588 @@
+[
+  {
+    "id": "p001",
+    "slug": "ncert-mathematics-class-5",
+    "name": "NCERT Mathematics Class 5",
+    "price": 145,
+    "mrp": 165,
+    "categoryId": "textbooks",
+    "subCategoryId": "textbooks",
+    "schoolId": null,
+    "classes": ["Class 5"],
+    "brand": "NCERT",
+    "sku": "BK-NCERT-MTH-05",
+    "images": [
+      "https://images.unsplash.com/photo-1544716278-ca5e3f4abd8c?w=600&auto=format&fit=crop&q=80",
+      "https://images.unsplash.com/photo-1509228468518-180dd4864904?w=600&auto=format&fit=crop&q=80"
+    ],
+    "stockByShop": {
+      "shop-guwahati-panbazar": 45,
+      "shop-guwahati-gsroad": 28,
+      "shop-guwahati-beltola": 20,
+      "shop-guwahati-maligaon": 15
+    },
+    "isActive": true,
+    "isFeatured": true,
+    "createdAt": "2026-01-10T10:00:00Z",
+    "swatches": ["#22C55E", "#FF5A1F", "#3B82F6"],
+    "description": "Standard prescribed NCERT Mathematics textbook for Class 5 students with problem sets and mental math practice for CBSE and SEBA schools.",
+    "specifications": [
+      { "label": "Publisher", "value": "NCERT New Delhi" },
+      { "label": "Edition", "value": "2026 Session" },
+      { "label": "Language", "value": "English" },
+      { "label": "Binding", "value": "Paperback with Protective Lamination" },
+      { "label": "Pages", "value": "216 Pages" }
+    ]
+  },
+  {
+    "id": "p013",
+    "slug": "ncert-science-class-10",
+    "name": "NCERT Science & Technology Class 10",
+    "price": 195,
+    "mrp": 215,
+    "categoryId": "textbooks",
+    "subCategoryId": "textbooks",
+    "schoolId": null,
+    "classes": ["Class 10"],
+    "brand": "NCERT",
+    "sku": "BK-NCERT-SCI-10",
+    "images": [
+      "https://images.unsplash.com/photo-1532012197267-da84d127e765?w=600&auto=format&fit=crop&q=80",
+      "https://images.unsplash.com/photo-1509228468518-180dd4864904?w=600&auto=format&fit=crop&q=80"
+    ],
+    "stockByShop": {
+      "shop-guwahati-panbazar": 65,
+      "shop-guwahati-gsroad": 40,
+      "shop-guwahati-beltola": 30,
+      "shop-guwahati-maligaon": 25
+    },
+    "isActive": true,
+    "isFeatured": true,
+    "isBestSeller": true,
+    "createdAt": "2026-01-11T10:00:00Z",
+    "swatches": ["#2563EB", "#059669", "#DC2626"],
+    "description": "Latest updated edition of NCERT Class 10 Science textbook covering Physics, Chemistry, and Biology modules with exemplar questions for board preparation.",
+    "specifications": [
+      { "label": "Publisher", "value": "NCERT New Delhi" },
+      { "label": "Board", "value": "CBSE & SEBA" },
+      { "label": "Pages", "value": "312 Pages" },
+      { "label": "Binding", "value": "Reinforced Perfect Bound" }
+    ]
+  },
+  {
+    "id": "p014",
+    "slug": "oxford-school-atlas-37th",
+    "name": "Oxford School Atlas (37th Latest Edition)",
+    "price": 425,
+    "mrp": 490,
+    "categoryId": "textbooks",
+    "subCategoryId": "textbooks",
+    "schoolId": null,
+    "classes": ["Class 6", "Class 7", "Class 8", "Class 9", "Class 10"],
+    "brand": "Oxford University Press",
+    "sku": "BK-OUP-ATL-37",
+    "images": [
+      "https://images.unsplash.com/photo-1524995997946-a1c2e315a42f?w=600&auto=format&fit=crop&q=80",
+      "https://images.unsplash.com/photo-1544716278-ca5e3f4abd8c?w=600&auto=format&fit=crop&q=80"
+    ],
+    "stockByShop": {
+      "shop-guwahati-panbazar": 50,
+      "shop-guwahati-gsroad": 35,
+      "shop-guwahati-beltola": 25,
+      "shop-guwahati-maligaon": 20
+    },
+    "isActive": true,
+    "isFeatured": true,
+    "createdAt": "2026-01-11T12:00:00Z",
+    "swatches": ["#D97706", "#2563EB", "#10B981"],
+    "description": "Authoritative thematic and topographic maps of Northeast India, India, and the world with downloadable GIS data access.",
+    "specifications": [
+      { "label": "Publisher", "value": "Oxford University Press" },
+      { "label": "Maps", "value": "240+ High-definition Full-color Plates" },
+      { "label": "Edition", "value": "37th Edition (Updated NE Maps)" }
+    ]
+  },
+  {
+    "id": "p015",
+    "slug": "classmate-pulse-spiral-register-set",
+    "name": "Classmate Pulse 6-Subject Spiral Register (300 Pages)",
+    "price": 280,
+    "mrp": 330,
+    "categoryId": "notebooks",
+    "subCategoryId": "notebooks",
+    "schoolId": null,
+    "classes": ["Class 8", "Class 9", "Class 10", "Class 11", "Class 12"],
+    "brand": "Classmate",
+    "sku": "NB-CLS-PLS-300",
+    "images": [
+      "https://images.unsplash.com/photo-1544816155-12df9643f363?w=600&auto=format&fit=crop&q=80",
+      "https://images.unsplash.com/photo-1531346878377-a5be20888e57?w=600&auto=format&fit=crop&q=80"
+    ],
+    "stockByShop": {
+      "shop-guwahati-panbazar": 90,
+      "shop-guwahati-gsroad": 60,
+      "shop-guwahati-beltola": 45,
+      "shop-guwahati-maligaon": 30
+    },
+    "isActive": true,
+    "isFeatured": true,
+    "isBestSeller": true,
+    "createdAt": "2026-01-13T10:00:00Z",
+    "swatches": ["#8B5CF6", "#EC4899", "#3B82F6"],
+    "description": "High-durability polypropylene cover spiral register with color-coded removable subject dividers and ultra-bright 75 GSM ozone-treated paper.",
+    "specifications": [
+      { "label": "Pages", "value": "300 Single Ruled Pages" },
+      { "label": "Dividers", "value": "6 Color Coded Snap-in Tabs" },
+      { "label": "Paper Quality", "value": "75 GSM Whiter & Smoother" }
+    ]
+  },
+  {
+    "id": "p016",
+    "slug": "navneet-long-copy-bundle-pack-6",
+    "name": "Navneet Premium Long Copy (Pack of 6 Hardbound Registers)",
+    "price": 499,
+    "mrp": 600,
+    "categoryId": "notebooks",
+    "subCategoryId": "notebooks",
+    "schoolId": null,
+    "classes": ["Class 6", "Class 7", "Class 8", "Class 9", "Class 10"],
+    "brand": "Navneet",
+    "sku": "NB-NAV-LNG-S6",
+    "images": [
+      "https://images.unsplash.com/photo-1589829085413-56de8ae18c73?w=600&auto=format&fit=crop&q=80",
+      "https://images.unsplash.com/photo-1583485088034-697b5bc54ccd?w=600&auto=format&fit=crop&q=80"
+    ],
+    "stockByShop": {
+      "shop-guwahati-panbazar": 75,
+      "shop-guwahati-gsroad": 45,
+      "shop-guwahati-beltola": 35,
+      "shop-guwahati-maligaon": 25
+    },
+    "isActive": true,
+    "isFeatured": true,
+    "createdAt": "2026-01-13T14:00:00Z",
+    "swatches": ["#1E3A8A", "#065F46", "#991B1B"],
+    "description": "Heavy-duty hardbound long registers with embossed gold foil title spine, perfect for annual school notes and mathematics practice.",
+    "specifications": [
+      { "label": "Pack Content", "value": "6 Bound Long Registers (172 pgs each)" },
+      { "label": "Cover", "value": "Rigid Hardboard 1.5mm Laminated" },
+      { "label": "Paper", "value": "70 GSM Premium Super White" }
+    ]
+  },
+  {
+    "id": "p017",
+    "slug": "cbse-class-10-complete-syllabus-bundle",
+    "name": "CBSE Class 10 Complete 5-Book Syllabus Bundle (2026 Edition)",
+    "price": 980,
+    "mrp": 1150,
+    "categoryId": "textbooks",
+    "subCategoryId": "textbooks",
+    "schoolId": null,
+    "classes": ["Class 10"],
+    "brand": "NCERT Official",
+    "sku": "BDL-CBSE-10-ALL5",
+    "images": [
+      "https://images.unsplash.com/photo-1497633762265-9d179a990aa6?w=600&auto=format&fit=crop&q=80",
+      "https://images.unsplash.com/photo-1524995997946-a1c2e315a42f?w=600&auto=format&fit=crop&q=80"
+    ],
+    "stockByShop": {
+      "shop-guwahati-panbazar": 40,
+      "shop-guwahati-gsroad": 25,
+      "shop-guwahati-beltola": 20,
+      "shop-guwahati-maligaon": 15
+    },
+    "isActive": true,
+    "isFeatured": true,
+    "isBestSeller": true,
+    "createdAt": "2026-01-15T10:00:00Z",
+    "swatches": ["#FF5A1F", "#0A0A0A", "#2563EB"],
+    "description": "All 5 prescribed textbooks in one verified bundle: NCERT Mathematics, Science, Social Science (4 parts), First Flight English, and Kshitij Hindi.",
+    "specifications": [
+      { "label": "Included Books", "value": "5 Core NCERT Textbooks + Free Book Covers" },
+      { "label": "Session", "value": "Official 2026-2027 Academic Session" },
+      { "label": "Bonus", "value": "10 Heavy PVC Protective Book Slipcovers" }
+    ]
+  },
+  {
+    "id": "p018",
+    "slug": "classmate-practical-science-record-book",
+    "name": "Classmate Practical Science Record Notebook (Hardbound)",
+    "price": 140,
+    "mrp": 160,
+    "categoryId": "notebooks",
+    "subCategoryId": "notebooks",
+    "schoolId": null,
+    "classes": ["Class 9", "Class 10", "Class 11", "Class 12"],
+    "brand": "Classmate",
+    "sku": "NB-CLS-PRC-SCI",
+    "images": [
+      "https://images.unsplash.com/photo-1506784983877-45594efa4cbe?w=600&auto=format&fit=crop&q=80",
+      "https://images.unsplash.com/photo-1532094349884-543bc11b234d?w=600&auto=format&fit=crop&q=80"
+    ],
+    "stockByShop": {
+      "shop-guwahati-panbazar": 85,
+      "shop-guwahati-gsroad": 50,
+      "shop-guwahati-beltola": 40,
+      "shop-guwahati-maligaon": 30
+    },
+    "isActive": true,
+    "isFeatured": false,
+    "isBestSeller": true,
+    "createdAt": "2026-01-19T10:00:00Z",
+    "swatches": ["#059669", "#2563EB", "#7C3AED"],
+    "description": "Official school practical record book with one side ruled, one side plain drawing bond paper for Physics, Chemistry, and Biology experiments.",
+    "specifications": [
+      { "label": "Layout", "value": "One Side Ruled, One Side Unruled" },
+      { "label": "Paper", "value": "80 GSM High Opacity Ink-Proof Bond" },
+      { "label": "Binding", "value": "Hardbound Cloth Spine" }
+    ]
+  },
+  {
+    "id": "p002",
+    "slug": "camlin-notebook-200-pages",
+    "name": "Camlin Notebook 200 Pages (Set of 4)",
+    "price": 320,
+    "mrp": 380,
+    "categoryId": "notebooks",
+    "subCategoryId": "notebooks",
+    "schoolId": null,
+    "classes": ["Class 4", "Class 5", "Class 6", "Class 7", "Class 8"],
+    "brand": "Camlin",
+    "sku": "NB-CAM-200-S4",
+    "images": [
+      "https://images.unsplash.com/photo-1531346878377-a5be20888e57?w=600&auto=format&fit=crop&q=80",
+      "https://images.unsplash.com/photo-1583485088034-697b5bc54ccd?w=600&auto=format&fit=crop&q=80"
+    ],
+    "stockByShop": {
+      "shop-guwahati-panbazar": 80,
+      "shop-guwahati-gsroad": 55,
+      "shop-guwahati-beltola": 40,
+      "shop-guwahati-maligaon": 35
+    },
+    "isActive": true,
+    "isFeatured": true,
+    "createdAt": "2026-01-12T10:00:00Z",
+    "swatches": ["#22C55E", "#FF5A1F", "#3B82F6"],
+    "description": "Pack of 4 premium single-ruled 200-page notebooks made with bright 70 GSM elemental chlorine-free paper.",
+    "specifications": [
+      { "label": "Pages", "value": "200 Pages each" },
+      { "label": "Ruling", "value": "Single Ruled with Margin" }
+    ]
+  },
+  {
+    "id": "p003",
+    "slug": "don-bosco-boys-shirt",
+    "name": "Don Bosco Guwahati Uniform Shirt (Boys)",
+    "price": 480,
+    "mrp": 480,
+    "categoryId": "uniforms",
+    "subCategoryId": "uniforms",
+    "schoolId": "don-bosco-panbazar",
+    "classes": ["Class 1", "Class 2", "Class 3", "Class 4", "Class 5", "Class 6", "Class 7", "Class 8"],
+    "brand": "SSG Uniform Lab",
+    "sku": "UNF-DBG-SHT-BYS",
+    "images": [
+      "https://images.unsplash.com/photo-1596461404969-9ae70f2830c1?w=600&auto=format&fit=crop&q=80",
+      "https://images.unsplash.com/photo-1521572267360-ee0c2909d518?w=600&auto=format&fit=crop&q=80"
+    ],
+    "stockByShop": {
+      "shop-guwahati-panbazar": 95,
+      "shop-guwahati-gsroad": 40,
+      "shop-guwahati-beltola": 30,
+      "shop-guwahati-maligaon": 25
+    },
+    "isActive": true,
+    "isFeatured": true,
+    "createdAt": "2026-01-14T10:00:00Z",
+    "swatches": ["#22C55E", "#FF5A1F", "#3B82F6"],
+    "description": "Official tailored white uniform shirt for Don Bosco School Panbazar boys with high-density embroidered school emblem.",
+    "specifications": [
+      { "label": "Fabric", "value": "65% Cotton, 35% Poly-Poplin" },
+      { "label": "Fit", "value": "School Regulation Regular Fit" }
+    ]
+  },
+  {
+    "id": "p004",
+    "slug": "school-bag-reflective-strip",
+    "name": "Fabric School Bag with Reflective Strip",
+    "price": 899,
+    "mrp": 1199,
+    "categoryId": "bags",
+    "subCategoryId": "bags",
+    "schoolId": null,
+    "classes": ["Class 4", "Class 5", "Class 6", "Class 7", "Class 8", "Class 9", "Class 10"],
+    "brand": "Skybags VIP",
+    "sku": "BAG-FAB-RFL-01",
+    "images": [
+      "https://images.unsplash.com/photo-1553062407-98eeb64c6a62?w=600&auto=format&fit=crop&q=80",
+      "https://images.unsplash.com/photo-1588850561407-ed78c282e89b?w=600&auto=format&fit=crop&q=80"
+    ],
+    "stockByShop": {
+      "shop-guwahati-panbazar": 60,
+      "shop-guwahati-gsroad": 35,
+      "shop-guwahati-beltola": 25,
+      "shop-guwahati-maligaon": 20
+    },
+    "isActive": true,
+    "isFeatured": true,
+    "createdAt": "2026-01-16T10:00:00Z",
+    "swatches": ["#22C55E", "#FF5A1F", "#3B82F6"],
+    "description": "Ergonomic 3-compartment waterproof school bag with padded shoulder straps and high-visibility reflective safety strip.",
+    "specifications": [
+      { "label": "Capacity", "value": "28 Litres" },
+      { "label": "Material", "value": "Water-Repellent Poly-Canvas" }
+    ]
+  },
+  {
+    "id": "p005",
+    "slug": "faber-castell-geometry-box",
+    "name": "Faber-Castell Geometry Box",
+    "price": 249,
+    "mrp": 299,
+    "categoryId": "stationery",
+    "subCategoryId": "stationery",
+    "schoolId": null,
+    "classes": ["Class 5", "Class 6", "Class 7", "Class 8", "Class 9", "Class 10"],
+    "brand": "Faber-Castell",
+    "sku": "STN-FBC-GEO-01",
+    "images": [
+      "https://images.unsplash.com/photo-1583485088034-697b5bc54ccd?w=600&auto=format&fit=crop&q=80"
+    ],
+    "stockByShop": {
+      "shop-guwahati-panbazar": 140,
+      "shop-guwahati-gsroad": 90,
+      "shop-guwahati-beltola": 65,
+      "shop-guwahati-maligaon": 50
+    },
+    "isActive": true,
+    "isFeatured": true,
+    "createdAt": "2026-01-18T10:00:00Z",
+    "swatches": ["#22C55E", "#FF5A1F", "#3B82F6"],
+    "description": "Mathematical drawing instruments set with self-centering compass, divider, protractor, set squares, ruler, and eraser.",
+    "specifications": [
+      { "label": "Material", "value": "Die-cast rust-resistant metal" },
+      { "label": "Case", "value": "Sturdy tin box" }
+    ]
+  },
+  {
+    "id": "p006",
+    "slug": "nataraj-pencils-pack-10",
+    "name": "Nataraj HB Pencils (Pack of 10)",
+    "price": 65,
+    "mrp": 80,
+    "categoryId": "stationery",
+    "subCategoryId": "stationery",
+    "schoolId": null,
+    "classes": ["Class 1", "Class 2", "Class 3", "Class 4", "Class 5", "Class 6"],
+    "brand": "Nataraj",
+    "sku": "STN-NAT-PNC-10",
+    "images": [
+      "https://images.unsplash.com/photo-1585336261026-7f0932573210?w=600&auto=format&fit=crop&q=80"
+    ],
+    "stockByShop": {
+      "shop-guwahati-panbazar": 300,
+      "shop-guwahati-gsroad": 180,
+      "shop-guwahati-beltola": 120,
+      "shop-guwahati-maligaon": 110
+    },
+    "isActive": true,
+    "isFeatured": true,
+    "createdAt": "2026-01-20T10:00:00Z",
+    "swatches": ["#22C55E", "#FF5A1F", "#3B82F6"],
+    "description": "Smooth dark HB bonded lead pencils for neat writing and drawing. Includes free eraser and sharpener.",
+    "specifications": [
+      { "label": "Pack Size", "value": "10 Pencils + 1 Sharpener + 1 Eraser" },
+      { "label": "Lead Grade", "value": "HB Dark" }
+    ]
+  },
+  {
+    "id": "p007",
+    "slug": "doms-wax-crayons-24",
+    "name": "Doms Wax Crayons — 24 Shades",
+    "price": 120,
+    "mrp": 140,
+    "categoryId": "art-craft",
+    "subCategoryId": "art-craft",
+    "schoolId": null,
+    "classes": ["Nursery", "LKG", "UKG", "Class 1", "Class 2", "Class 3", "Class 4"],
+    "brand": "Doms",
+    "sku": "ART-DOM-CR-24",
+    "images": [
+      "https://images.unsplash.com/photo-1513364776144-60967b0f800f?w=600&auto=format&fit=crop&q=80"
+    ],
+    "stockByShop": {
+      "shop-guwahati-panbazar": 125,
+      "shop-guwahati-gsroad": 75,
+      "shop-guwahati-beltola": 50,
+      "shop-guwahati-maligaon": 40
+    },
+    "isActive": true,
+    "isFeatured": true,
+    "createdAt": "2026-01-22T10:00:00Z",
+    "swatches": ["#22C55E", "#FF5A1F", "#3B82F6"],
+    "description": "Extra smooth non-toxic wax crayons with vibrant pigment payoff for junior school art and coloring activities.",
+    "specifications": [
+      { "label": "Shades", "value": "24 Assorted Shades" },
+      { "label": "Safety", "value": "100% Non-Toxic Child Safe" }
+    ]
+  },
+  {
+    "id": "p008",
+    "slug": "class-8-science-lab-kit",
+    "name": "Class 8 Science Lab Starter Kit",
+    "price": 1299,
+    "mrp": 1499,
+    "categoryId": "lab-equipment",
+    "subCategoryId": "lab-equipment",
+    "schoolId": null,
+    "classes": ["Class 8"],
+    "brand": "SSG Lab Pro",
+    "sku": "LAB-KIT-SCI-08",
+    "images": [
+      "https://images.unsplash.com/photo-1532094349884-543bc11b234d?w=600&auto=format&fit=crop&q=80"
+    ],
+    "stockByShop": {
+      "shop-guwahati-panbazar": 55,
+      "shop-guwahati-gsroad": 30,
+      "shop-guwahati-beltola": 20,
+      "shop-guwahati-maligaon": 15
+    },
+    "isActive": true,
+    "isFeatured": true,
+    "createdAt": "2026-01-25T10:00:00Z",
+    "swatches": ["#22C55E", "#FF5A1F", "#3B82F6"],
+    "description": "Complete experimental toolkit including test tubes, test tube holder, litmus paper strips, glass beaker, and magnet bars.",
+    "specifications": [
+      { "label": "Grade Level", "value": "Class 8 Practical Syllabus" },
+      { "label": "Included Items", "value": "15 Essential Lab Apparatus" }
+    ]
+  },
+  {
+    "id": "p009",
+    "slug": "steel-water-bottle-750ml",
+    "name": "Steel Water Bottle 750ml",
+    "price": 349,
+    "mrp": 449,
+    "categoryId": "bags",
+    "subCategoryId": "bags",
+    "schoolId": null,
+    "classes": ["Class 1", "Class 2", "Class 3", "Class 4", "Class 5", "Class 6", "Class 7", "Class 8", "Class 9", "Class 10"],
+    "brand": "Cello",
+    "sku": "ACC-BTL-STL-750",
+    "images": [
+      "https://images.unsplash.com/photo-1602143407151-7111542de6e8?w=600&auto=format&fit=crop&q=80"
+    ],
+    "stockByShop": {
+      "shop-guwahati-panbazar": 110,
+      "shop-guwahati-gsroad": 65,
+      "shop-guwahati-beltola": 45,
+      "shop-guwahati-maligaon": 40
+    },
+    "isActive": true,
+    "isFeatured": false,
+    "isBestSeller": true,
+    "createdAt": "2026-01-28T10:00:00Z",
+    "swatches": ["#22C55E", "#FF5A1F", "#3B82F6"],
+    "description": "Food grade rust-free stainless steel hydration bottle with leakproof cap and carrying loop.",
+    "specifications": [
+      { "label": "Capacity", "value": "750 ml" },
+      { "label": "Material", "value": "Grade 304 Stainless Steel" }
+    ]
+  },
+  {
+    "id": "p010",
+    "slug": "reynolds-ballpoint-pens-5",
+    "name": "Reynolds Ballpoint Pens (Pack of 5)",
+    "price": 45,
+    "mrp": 50,
+    "categoryId": "stationery",
+    "subCategoryId": "stationery",
+    "schoolId": null,
+    "classes": ["Class 6", "Class 7", "Class 8", "Class 9", "Class 10", "Class 11", "Class 12"],
+    "brand": "Reynolds",
+    "sku": "STN-REY-BLP-05",
+    "images": [
+      "https://images.unsplash.com/photo-1585336261026-7f0932573210?w=600&auto=format&fit=crop&q=80"
+    ],
+    "stockByShop": {
+      "shop-guwahati-panbazar": 350,
+      "shop-guwahati-gsroad": 220,
+      "shop-guwahati-beltola": 160,
+      "shop-guwahati-maligaon": 140
+    },
+    "isActive": true,
+    "isFeatured": false,
+    "isBestSeller": true,
+    "createdAt": "2026-01-30T10:00:00Z",
+    "swatches": ["#22C55E", "#FF5A1F", "#3B82F6"],
+    "description": "Classic reliable fine point blue ink ballpens for effortless continuous exam and note writing.",
+    "specifications": [
+      { "label": "Tip Size", "value": "0.7 mm Fine" },
+      { "label": "Ink Color", "value": "Blue" }
+    ]
+  },
+  {
+    "id": "p011",
+    "slug": "don-bosco-tie",
+    "name": "Don Bosco School Tie",
+    "price": 180,
+    "mrp": 180,
+    "categoryId": "uniforms",
+    "subCategoryId": "uniforms",
+    "schoolId": "don-bosco-panbazar",
+    "classes": ["Class 5", "Class 6", "Class 7", "Class 8", "Class 9", "Class 10", "Class 11", "Class 12"],
+    "brand": "SSG Uniform Lab",
+    "sku": "UNF-DB-TIE-01",
+    "images": [
+      "https://images.unsplash.com/photo-1598033129183-c4f50c736f10?w=600&auto=format&fit=crop&q=80"
+    ],
+    "stockByShop": {
+      "shop-guwahati-panbazar": 95,
+      "shop-guwahati-gsroad": 50,
+      "shop-guwahati-beltola": 35,
+      "shop-guwahati-maligaon": 25
+    },
+    "isActive": true,
+    "isFeatured": false,
+    "isBestSeller": true,
+    "createdAt": "2026-02-01T10:00:00Z",
+    "swatches": ["#22C55E", "#FF5A1F", "#3B82F6"],
+    "description": "Official woven polyester necktie for Don Bosco School Panbazar with authentic institutional stripes.",
+    "specifications": [
+      { "label": "School", "value": "Don Bosco Guwahati" },
+      { "label": "Material", "value": "100% Micro-polyester Jacquard" }
+    ]
+  },
+  {
+    "id": "p012",
+    "slug": "st-marys-skirt",
+    "name": "St. Mary's School Pleated Skirt",
+    "price": 520,
+    "mrp": 550,
+    "categoryId": "uniforms",
+    "subCategoryId": "uniforms",
+    "schoolId": "st-marys-guwahati",
+    "classes": ["Class 1", "Class 2", "Class 3", "Class 4", "Class 5", "Class 6", "Class 7", "Class 8"],
+    "brand": "SSG Uniform Lab",
+    "sku": "UNF-SM-SKT-01",
+    "images": [
+      "https://images.unsplash.com/photo-1583496661160-fb5886a0aaaa?w=600&auto=format&fit=crop&q=80"
+    ],
+    "stockByShop": {
+      "shop-guwahati-panbazar": 75,
+      "shop-guwahati-gsroad": 40,
+      "shop-guwahati-beltola": 30,
+      "shop-guwahati-maligaon": 35
+    },
+    "isActive": true,
+    "isFeatured": false,
+    "isBestSeller": true,
+    "createdAt": "2026-02-03T10:00:00Z",
+    "swatches": ["#22C55E", "#FF5A1F", "#3B82F6"],
+    "description": "School regulation pleated uniform skirt for St. Mary's HS School Guwahati with concealed side zip and adjustable waist.",
+    "specifications": [
+      { "label": "School", "value": "St. Mary's HS School Guwahati" },
+      { "label": "Fabric", "value": "Durable Gabardine Poly-Viscose" }
+    ]
+  }
+]

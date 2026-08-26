@@ -1,0 +1,25 @@
+@theme {
+  --color-orange-primary: #FF5A1F;
+  --color-ink-black: #0A0A0A;
+  --color-accent-purple: #7C3AED;
+  --color-cream-bg: #FFFFFF;
+  --color-warm-white: #FFFFFF;
+  --color-muted-text: #6B6B6B;
+  --color-border-hairline: #E5E5E0;
+  --color-whatsapp-green: #25D366;
+  --color-success-green: #16A34A;
+  --color-danger-red: #DC2626;
+
+  --font-display: 'Bricolage Grotesque', -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-serif: 'Instrument Serif', Georgia, serif;
+  --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+
+  --radius-card: 16px;
+  --radius-pill: 9999px;
+}
+
+:root {
+  --font-display: 'Bricolage Grotesque', -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-serif: 'Instrument Serif', Georgia, serif;
+  --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+}
