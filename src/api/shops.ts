@@ -1,19 +1,27 @@
 import { Shop } from '../types';
-import shopsData from '../mocks/shops.json';
 
-const shops: Shop[] = shopsData as Shop[];
+const BASE = import.meta.env.VITE_API_BASE_URL || '';
 
 export async function fetchShops(): Promise<Shop[]> {
-  // Simulate network delay
-  await new Promise((res) => setTimeout(res, 120));
-  return shops.filter((s) => s.isActive);
+  if (!BASE) {
+    const { default: shopsData } = await import('../mocks/shops.json');
+    return (shopsData as Shop[]).filter((s) => s.isActive);
+  }
+  const res = await fetch(`${BASE}/api/shops`);
+  if (!res.ok) throw new Error('Failed to fetch shops');
+  const data = await res.json();
+  return data.shops ?? data;
 }
 
 export async function fetchShopById(id: string): Promise<Shop | null> {
-  await new Promise((res) => setTimeout(res, 100));
-  const shop = shops.find((s) => s.id === id || s.slug === id);
-  if (!shop) {
-    return null;
+  if (!BASE) {
+    const { default: shopsData } = await import('../mocks/shops.json');
+    const shops = shopsData as Shop[];
+    return shops.find((s) => s.id === id || s.slug === id) ?? null;
   }
-  return shop;
+  const res = await fetch(`${BASE}/api/shops/${id}`);
+  if (res.status === 404) return null;
+  if (!res.ok) throw new Error('Failed to fetch shop');
+  const data = await res.json();
+  return data.shop ?? data;
 }
