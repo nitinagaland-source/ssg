@@ -1,12 +1,13 @@
 import React, { useEffect, useState } from 'react';
 import { useAdminAuth } from '../context/AdminAuthContext';
-import { adminGetProducts, adminGetCategories, adminGetShops, adminCreateProduct, adminUpdateProduct, adminDeleteProduct } from '../api/client';
+import { adminGetProducts, adminGetCategories, adminGetShops, adminGetWarehouses, adminCreateProduct, adminUpdateProduct, adminDeleteProduct } from '../api/client';
+import { MultiImageUpload } from '../components/ImageUpload';
 
 const EMPTY_PRODUCT = {
   id: '', name: '', slug: '', description: '', price: 0, mrp: 0,
-  categoryId: '', schoolId: null, brand: '', sku: '', images: [''],
+  categoryId: '', schoolId: null, brand: '', sku: '', images: [],
   classes: [], isActive: true, isFeatured: false, isBestSeller: false,
-  stockByShop: {},
+  stockByShop: {}, stockByWarehouse: {},
 };
 
 export function AdminProductsPage() {
@@ -14,6 +15,7 @@ export function AdminProductsPage() {
   const [products, setProducts] = useState<any[]>([]);
   const [categories, setCategories] = useState<any[]>([]);
   const [shops, setShops] = useState<any[]>([]);
+  const [warehouses, setWarehouses] = useState<any[]>([]);
   const [loading, setLoading] = useState(true);
   const [search, setSearch] = useState('');
   const [editing, setEditing] = useState<any | null>(null);
@@ -24,10 +26,14 @@ export function AdminProductsPage() {
     if (!token) return;
     setLoading(true);
     try {
-      const [p, c, s] = await Promise.all([adminGetProducts(token), adminGetCategories(token), adminGetShops(token)]);
+      const [p, c, s, w] = await Promise.all([
+        adminGetProducts(token), adminGetCategories(token),
+        adminGetShops(token), adminGetWarehouses(token)
+      ]);
       setProducts(p.products || p || []);
       setCategories(c.categories || c || []);
       setShops(s.shops || s || []);
+      setWarehouses(w.warehouses || w || []);
     } catch (e: any) { setError(e.message); }
     finally { setLoading(false); }
   };
@@ -40,15 +46,30 @@ export function AdminProductsPage() {
   );
 
   const openNew = () => {
-    const stock: any = {};
-    shops.forEach(s => stock[s.id] = 0);
-    setEditing({ ...EMPTY_PRODUCT, stockByShop: stock });
+    const shopStock: any = {};
+    const whStock: any = {};
+    shops.forEach(s => shopStock[s.id] = 0);
+    warehouses.forEach(w => whStock[w.id] = 0);
+    setEditing({ ...EMPTY_PRODUCT, stockByShop: shopStock, stockByWarehouse: whStock });
   };
 
   const openEdit = (p: any) => {
-    const stock: any = { ...p.stockByShop };
-    shops.forEach(s => { if (!(s.id in stock)) stock[s.id] = 0; });
-    setEditing({ ...p, stockByShop: stock, images: p.images?.length ? p.images : [''] });
+    const shopStock: any = { ...p.stockByShop };
+    const whStock: any = { ...p.stockByWarehouse };
+    shops.forEach(s => { if (!(s.id in shopStock)) shopStock[s.id] = 0; });
+    warehouses.forEach(w => { if (!(w.id in whStock)) whStock[w.id] = 0; });
+    setEditing({ ...p, stockByShop: shopStock, stockByWarehouse: whStock, images: p.images || [] });
+  };
+
+  const syncWarehouseStock = (shopId: string, qty: number) => {
+    // Find the warehouse linked to this shop
+    const shop = shops.find(s => s.id === shopId);
+    if (!shop?.warehouseId) return;
+    setEditing((prev: any) => ({
+      ...prev,
+      stockByShop: { ...prev.stockByShop, [shopId]: qty },
+      stockByWarehouse: { ...prev.stockByWarehouse, [shop.warehouseId]: qty }
+    }));
   };
 
   const handleSave = async () => {
@@ -56,9 +77,10 @@ export function AdminProductsPage() {
     setSaving(true);
     setError('');
     try {
+      const id = editing.id || (editing.slug || editing.name.toLowerCase().replace(/\s+/g, '-').replace(/[^a-z0-9-]/g, ''));
+      const slug = editing.slug || id;
       if (!editing.id) {
-        const id = editing.slug || editing.name.toLowerCase().replace(/\s+/g, '-').replace(/[^a-z0-9-]/g, '');
-        await adminCreateProduct(token, { ...editing, id });
+        await adminCreateProduct(token, { ...editing, id, slug });
       } else {
         await adminUpdateProduct(token, editing.id, editing);
       }
@@ -85,11 +107,9 @@ export function AdminProductsPage() {
 
       {error && <div className="bg-red-50 text-red-600 text-sm px-4 py-3 rounded-lg">{error}</div>}
 
-      <input
-        value={search} onChange={e => setSearch(e.target.value)}
-        placeholder="Search products..."
-        className="w-full border border-[#E0E0E0] rounded-lg px-3 py-2 text-sm focus:outline-none focus:border-[#0A0A0A]"
-      />
+      <input value={search} onChange={e => setSearch(e.target.value)}
+        placeholder="Search products by name or SKU..."
+        className="w-full border border-[#E0E0E0] rounded-lg px-3 py-2 text-sm focus:outline-none focus:border-[#0A0A0A]" />
 
       {loading ? <div className="text-center py-20 text-[#6B6B6B]">Loading...</div> : (
         <div className="bg-white rounded-xl border border-[#E0E0E0] overflow-hidden">
@@ -100,7 +120,7 @@ export function AdminProductsPage() {
                   <th className="text-left px-4 py-3 text-xs font-semibold text-[#6B6B6B]">Product</th>
                   <th className="text-left px-4 py-3 text-xs font-semibold text-[#6B6B6B]">SKU</th>
                   <th className="text-left px-4 py-3 text-xs font-semibold text-[#6B6B6B]">Price</th>
-                  <th className="text-left px-4 py-3 text-xs font-semibold text-[#6B6B6B]">Stock</th>
+                  <th className="text-left px-4 py-3 text-xs font-semibold text-[#6B6B6B]">Total Stock</th>
                   <th className="text-left px-4 py-3 text-xs font-semibold text-[#6B6B6B]">Status</th>
                   <th className="text-right px-4 py-3 text-xs font-semibold text-[#6B6B6B]">Actions</th>
                 </tr>
@@ -111,8 +131,13 @@ export function AdminProductsPage() {
                   return (
                     <tr key={p.id} className="hover:bg-[#F9F9F7]">
                       <td className="px-4 py-3">
-                        <div className="font-medium text-[#0A0A0A] line-clamp-1">{p.name}</div>
-                        <div className="text-xs text-[#6B6B6B]">{p.brand}</div>
+                        <div className="flex items-center gap-2">
+                          {p.images?.[0] && <img src={p.images[0]} alt="" className="w-8 h-8 rounded object-cover" />}
+                          <div>
+                            <div className="font-medium text-[#0A0A0A] line-clamp-1">{p.name}</div>
+                            <div className="text-xs text-[#6B6B6B]">{p.brand}</div>
+                          </div>
+                        </div>
                       </td>
                       <td className="px-4 py-3 text-xs text-[#6B6B6B]">{p.sku}</td>
                       <td className="px-4 py-3 font-semibold">₹{p.price}</td>
@@ -121,7 +146,7 @@ export function AdminProductsPage() {
                           (totalStock as number) === 0 ? 'bg-red-100 text-red-600' :
                           (totalStock as number) < 10 ? 'bg-orange-100 text-orange-600' :
                           'bg-green-100 text-green-600'
-                        }`}>{totalStock as number}</span>
+                        }`}>{totalStock as number} units</span>
                       </td>
                       <td className="px-4 py-3">
                         <span className={`text-xs px-2 py-1 rounded-full ${p.isActive ? 'bg-green-100 text-green-700' : 'bg-gray-100 text-gray-500'}`}>
@@ -142,7 +167,7 @@ export function AdminProductsPage() {
         </div>
       )}
 
-      {/* Edit Modal */}
+      {/* Edit/Add Modal */}
       {editing && (
         <div className="fixed inset-0 bg-black/50 z-50 flex items-start justify-center p-4 overflow-y-auto">
           <div className="bg-white rounded-2xl w-full max-w-2xl my-4">
@@ -150,7 +175,7 @@ export function AdminProductsPage() {
               <h2 className="font-bold text-[#0A0A0A]">{editing.id ? 'Edit Product' : 'Add Product'}</h2>
               <button onClick={() => setEditing(null)} className="text-[#6B6B6B] hover:text-[#0A0A0A]">✕</button>
             </div>
-            <div className="p-6 space-y-4 max-h-[70vh] overflow-y-auto">
+            <div className="p-6 space-y-5 max-h-[75vh] overflow-y-auto">
               {error && <div className="bg-red-50 text-red-600 text-sm px-3 py-2 rounded-lg">{error}</div>}
 
               <div className="grid grid-cols-2 gap-4">
@@ -169,7 +194,7 @@ export function AdminProductsPage() {
               <div>
                 <label className="block text-xs font-semibold text-[#0A0A0A] mb-1.5">Description</label>
                 <textarea value={editing.description} onChange={e => setEditing({...editing, description: e.target.value})}
-                  rows={3} className="w-full border border-[#E0E0E0] rounded-lg px-3 py-2 text-sm focus:outline-none focus:border-[#0A0A0A] resize-none" placeholder="Product description" />
+                  rows={2} className="w-full border border-[#E0E0E0] rounded-lg px-3 py-2 text-sm focus:outline-none focus:border-[#0A0A0A] resize-none" />
               </div>
 
               <div className="grid grid-cols-3 gap-4">
@@ -190,42 +215,51 @@ export function AdminProductsPage() {
                 </div>
               </div>
 
-              <div className="grid grid-cols-2 gap-4">
-                <div>
-                  <label className="block text-xs font-semibold text-[#0A0A0A] mb-1.5">Category</label>
-                  <select value={editing.categoryId} onChange={e => setEditing({...editing, categoryId: e.target.value})}
-                    className="w-full border border-[#E0E0E0] rounded-lg px-3 py-2 text-sm focus:outline-none focus:border-[#0A0A0A]">
-                    <option value="">Select category</option>
-                    {categories.map((c: any) => <option key={c.id} value={c.id}>{c.name}</option>)}
-                  </select>
-                </div>
-                <div>
-                  <label className="block text-xs font-semibold text-[#0A0A0A] mb-1.5">Image URL</label>
-                  <input value={editing.images?.[0] || ''} onChange={e => setEditing({...editing, images: [e.target.value]})}
-                    className="w-full border border-[#E0E0E0] rounded-lg px-3 py-2 text-sm focus:outline-none focus:border-[#0A0A0A]" placeholder="https://..." />
-                </div>
+              <div>
+                <label className="block text-xs font-semibold text-[#0A0A0A] mb-1.5">Category</label>
+                <select value={editing.categoryId} onChange={e => setEditing({...editing, categoryId: e.target.value})}
+                  className="w-full border border-[#E0E0E0] rounded-lg px-3 py-2 text-sm focus:outline-none focus:border-[#0A0A0A]">
+                  <option value="">Select category</option>
+                  {categories.map((c: any) => <option key={c.id} value={c.id}>{c.name}</option>)}
+                </select>
               </div>
 
-              {/* Stock by shop */}
+              {/* Product Images - file upload */}
+              <MultiImageUpload
+                label="Product Images (upload from your device)"
+                values={editing.images || []}
+                onChange={urls => setEditing({...editing, images: urls})}
+                folder="products"
+              />
+
+              {/* Stock by Shop — syncs to linked warehouse automatically */}
               <div>
-                <label className="block text-xs font-semibold text-[#0A0A0A] mb-2">Stock by Shop</label>
+                <label className="block text-xs font-semibold text-[#0A0A0A] mb-1">Stock by Shop</label>
+                <p className="text-xs text-[#6B6B6B] mb-2">Setting stock for a shop auto-updates the linked warehouse too.</p>
                 <div className="space-y-2">
-                  {shops.map((shop: any) => (
-                    <div key={shop.id} className="flex items-center gap-3">
-                      <span className="text-xs text-[#6B6B6B] flex-1 truncate">{shop.name}</span>
-                      <input
-                        type="number" min="0"
-                        value={editing.stockByShop?.[shop.id] || 0}
-                        onChange={e => setEditing({...editing, stockByShop: {...editing.stockByShop, [shop.id]: +e.target.value}})}
-                        className="w-24 border border-[#E0E0E0] rounded-lg px-3 py-1.5 text-sm focus:outline-none focus:border-[#0A0A0A] text-center"
-                      />
-                    </div>
-                  ))}
+                  {shops.map((shop: any) => {
+                    const wh = warehouses.find(w => w.id === shop.warehouseId);
+                    return (
+                      <div key={shop.id} className="flex items-center gap-3 bg-[#F5F5F0] rounded-lg px-3 py-2">
+                        <div className="flex-1 min-w-0">
+                          <div className="text-xs font-medium text-[#0A0A0A]">{shop.name}</div>
+                          {wh && <div className="text-xs text-[#6B6B6B]">Warehouse: {wh.name}</div>}
+                        </div>
+                        <input
+                          type="number" min="0"
+                          value={editing.stockByShop?.[shop.id] || 0}
+                          onChange={e => syncWarehouseStock(shop.id, +e.target.value)}
+                          className="w-20 border border-[#E0E0E0] rounded-lg px-2 py-1.5 text-sm focus:outline-none focus:border-[#0A0A0A] text-center bg-white"
+                        />
+                        <span className="text-xs text-[#6B6B6B]">units</span>
+                      </div>
+                    );
+                  })}
                 </div>
               </div>
 
               {/* Flags */}
-              <div className="flex gap-4">
+              <div className="flex gap-4 flex-wrap">
                 {[['isActive','Active'],['isFeatured','Featured'],['isBestSeller','Best Seller']].map(([key, label]) => (
                   <label key={key} className="flex items-center gap-2 text-xs font-medium text-[#0A0A0A] cursor-pointer">
                     <input type="checkbox" checked={!!editing[key]} onChange={e => setEditing({...editing, [key]: e.target.checked})} className="rounded" />
