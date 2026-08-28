@@ -224,7 +224,7 @@ export const SchoolsPage: React.FC = () => {
                   </div>
 
                   <div className="relative z-10 mt-4 sm:mt-6 pt-3 sm:pt-4 border-t border-white/30 flex items-center justify-between text-[10px] sm:text-xs font-black text-white drop-shadow-sm">
-                    <span>{school.classesOffered.length} Classes</span>
+                    <span>{school.classesOffered.length > 0 ? (() => { const c = school.classesOffered; if (c.length === 1) return c[0]; if (c.length <= 3) return c.join(', '); return `${c[0]} – ${c[c.length - 1]}`; })() : 'No classes'}</span>
                     <span className="flex items-center gap-0.5 sm:gap-1 text-white font-black transition-transform group-hover:translate-x-1.5">
                       <span className="hidden sm:inline">View Catalog</span>
                       <span className="sm:hidden">Catalog</span>
