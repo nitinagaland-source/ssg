@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useAdminAuth } from '../context/AdminAuthContext';
 import { adminGetCategories, adminCreateCategory, adminUpdateCategory } from '../api/client';
+import { ImageUpload } from '../components/ImageUpload';
 
 const EMPTY: any = { id: '', name: '', slug: '', icon: '', image: '', order: 1, description: '', isActive: true };
 
@@ -29,7 +30,7 @@ export function AdminCategoriesPage() {
     setError('');
     try {
       const id = editing.id || editing.name.toLowerCase().replace(/\s+/g, '-').replace(/[^a-z0-9-]/g, '');
-      if (!editing.id) await adminCreateCategory(token, { ...editing, id });
+      if (!editing.id) await adminCreateCategory(token, { ...editing, id, slug: id });
       else await adminUpdateCategory(token, editing.id, editing);
       setEditing(null);
       await load();
@@ -62,7 +63,10 @@ export function AdminCategoriesPage() {
                 <tr key={c.id} className="hover:bg-[#F9F9F7]">
                   <td className="px-4 py-3">
                     <div className="flex items-center gap-3">
-                      <span className="text-xl">{c.icon}</span>
+                      {c.image
+                        ? <img src={c.image} alt="" className="w-10 h-10 rounded-lg object-cover border border-[#E0E0E0]" />
+                        : <span className="text-2xl w-10 text-center">{c.icon}</span>
+                      }
                       <div>
                         <div className="font-medium text-[#0A0A0A]">{c.name}</div>
                         <div className="text-xs text-[#6B6B6B]">{c.description}</div>
@@ -88,18 +92,26 @@ export function AdminCategoriesPage() {
 
       {editing && (
         <div className="fixed inset-0 bg-black/50 z-50 flex items-center justify-center p-4">
-          <div className="bg-white rounded-2xl w-full max-w-md">
-            <div className="px-6 py-4 border-b border-[#E0E0E0] flex items-center justify-between">
+          <div className="bg-white rounded-2xl w-full max-w-md max-h-[90vh] overflow-y-auto">
+            <div className="px-6 py-4 border-b border-[#E0E0E0] flex items-center justify-between sticky top-0 bg-white">
               <h2 className="font-bold text-[#0A0A0A]">{editing.id ? 'Edit Category' : 'Add Category'}</h2>
               <button onClick={() => setEditing(null)} className="text-[#6B6B6B] hover:text-[#0A0A0A]">✕</button>
             </div>
             <div className="p-6 space-y-4">
               {error && <div className="bg-red-50 text-red-600 text-sm px-3 py-2 rounded-lg">{error}</div>}
+
               <div>
                 <label className="block text-xs font-semibold text-[#0A0A0A] mb-1.5">Name *</label>
-                <input value={editing.name} onChange={e => setEditing({...editing, name: e.target.value})}
-                  className="w-full border border-[#E0E0E0] rounded-lg px-3 py-2 text-sm focus:outline-none focus:border-[#0A0A0A]" />
+                <input value={editing.name} onChange={e => setEditing({...editing, name: e.target.value, slug: e.target.value.toLowerCase().replace(/\s+/g,'-').replace(/[^a-z0-9-]/g,'')})}
+                  className="w-full border border-[#E0E0E0] rounded-lg px-3 py-2 text-sm focus:outline-none focus:border-[#0A0A0A]" placeholder="Category name" />
               </div>
+
+              <div>
+                <label className="block text-xs font-semibold text-[#0A0A0A] mb-1.5">Description</label>
+                <input value={editing.description || ''} onChange={e => setEditing({...editing, description: e.target.value})}
+                  className="w-full border border-[#E0E0E0] rounded-lg px-3 py-2 text-sm focus:outline-none focus:border-[#0A0A0A]" placeholder="Short description" />
+              </div>
+
               <div className="grid grid-cols-2 gap-4">
                 <div>
                   <label className="block text-xs font-semibold text-[#0A0A0A] mb-1.5">Icon (emoji)</label>
@@ -112,17 +124,20 @@ export function AdminCategoriesPage() {
                     className="w-full border border-[#E0E0E0] rounded-lg px-3 py-2 text-sm focus:outline-none focus:border-[#0A0A0A]" />
                 </div>
               </div>
-              <div>
-                <label className="block text-xs font-semibold text-[#0A0A0A] mb-1.5">Description</label>
-                <input value={editing.description || ''} onChange={e => setEditing({...editing, description: e.target.value})}
-                  className="w-full border border-[#E0E0E0] rounded-lg px-3 py-2 text-sm focus:outline-none focus:border-[#0A0A0A]" />
-              </div>
+
+              <ImageUpload
+                label="Category Image (upload from device)"
+                value={editing.image || ''}
+                onChange={url => setEditing({...editing, image: url})}
+                folder="categories"
+              />
+
               <label className="flex items-center gap-2 text-sm cursor-pointer">
-                <input type="checkbox" checked={editing.isActive !== false} onChange={e => setEditing({...editing, isActive: e.target.checked})} />
+                <input type="checkbox" checked={editing.isActive !== false} onChange={e => setEditing({...editing, isActive: e.target.checked})} className="rounded" />
                 Active
               </label>
             </div>
-            <div className="px-6 py-4 border-t border-[#E0E0E0] flex justify-end gap-3">
+            <div className="px-6 py-4 border-t border-[#E0E0E0] flex justify-end gap-3 sticky bottom-0 bg-white">
               <button onClick={() => setEditing(null)} className="px-4 py-2 text-sm text-[#6B6B6B]">Cancel</button>
               <button onClick={handleSave} disabled={saving} className="bg-[#0A0A0A] text-white px-5 py-2 rounded-lg text-sm font-semibold hover:bg-[#FF5A1F] transition-colors disabled:opacity-50">
                 {saving ? 'Saving...' : 'Save'}
