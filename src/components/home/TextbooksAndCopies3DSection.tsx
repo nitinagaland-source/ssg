@@ -49,7 +49,7 @@ export const TextbooksAndCopies3DSection: React.FC<TextbooksAndCopies3DSectionPr
   const handleQuickAdd = (e: React.MouseEvent, product: Product) => {
     e.preventDefault();
     e.stopPropagation();
-    const stock = selectedShop ? (product.stockByShop[selectedShop.id] ?? 0) : 10;
+    const stock = selectedShop ? (product.stockByShop?.[selectedShop.id] ?? 0) : (Object.values(product.stockByShop || {}).reduce((s: number, v) => s + (v as number), 0));
     if (stock <= 0) return;
     addToCart(product.id, 1, selectedShop?.id || 'shop-guwahati-panbazar');
   };
@@ -136,7 +136,7 @@ export const TextbooksAndCopies3DSection: React.FC<TextbooksAndCopies3DSectionPr
       {/* ========================================================================= */}
       <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-3 sm:gap-4 lg:gap-5">
         {filteredProducts.map((product) => {
-          const stock = selectedShop ? (product.stockByShop[selectedShop.id] ?? 0) : 10;
+          const stock = selectedShop ? (product.stockByShop?.[selectedShop.id] ?? 0) : (Object.values(product.stockByShop || {}).reduce((s: number, v) => s + (v as number), 0));
           const isOutOfStock = stock <= 0;
           const isInCart = items.some((item) => item.productId === product.id);
 

@@ -32,7 +32,13 @@ export function AdminDashboardPage() {
 
         setStats({ orders: orders.length, revenue, products: products.length, lowStock: lowStock.length });
         setRecentOrders(orders.slice(0, 5));
-        setLowStockProducts(lowStock.slice(0, 5));
+        // Sort: out of stock (0) first, then lowest stock
+        const sortedLowStock = [...lowStock].sort((a: any, b: any) => {
+          const sa = Object.values(a.stockByShop || {}).reduce((s: number, v) => s + (v as number), 0) as number;
+          const sb = Object.values(b.stockByShop || {}).reduce((s: number, v) => s + (v as number), 0) as number;
+          return sa - sb;
+        });
+        setLowStockProducts(sortedLowStock.slice(0, 8));
       } catch (e) {
         console.error(e);
       } finally {
@@ -112,8 +118,8 @@ export function AdminDashboardPage() {
                     <div className="text-xs font-semibold text-[#0A0A0A] line-clamp-1">{p.name}</div>
                     <div className="text-xs text-[#6B6B6B]">SKU: {p.sku}</div>
                   </div>
-                  <span className="text-xs font-bold text-orange-600 bg-orange-50 px-2 py-1 rounded-lg">
-                    {totalStock as number} left
+                  <span className={"text-xs font-bold px-2 py-1 rounded-lg " + ((totalStock as number) === 0 ? "text-red-600 bg-red-50" : "text-orange-600 bg-orange-50")}>
+                    {(totalStock as number) === 0 ? "OUT OF STOCK" : (totalStock as number) + " left"}
                   </span>
                 </div>
               );

@@ -13,7 +13,7 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
   const { selectedShop } = useSelectedShop();
   const { addToCart, items } = useCart();
 
-  const shopStock = selectedShop ? (product.stockByShop?.[selectedShop.id] ?? 10) : 10;
+  const shopStock = selectedShop ? (product.stockByShop?.[selectedShop.id] ?? 0) : (Object.values(product.stockByShop || {}).reduce((s, v) => s + (v as number), 0) || 0);
   const isOutOfStock = shopStock <= 0;
   const isInCart = items.some((item) => item.productId === product.id);
   const discountPercent =
