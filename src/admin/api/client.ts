@@ -51,8 +51,22 @@ export const adminUpdateCategory = (token: string, id: string, data: any) =>
 // Shops
 export const adminGetShops = (token: string) =>
   adminFetch('/api/shops', token);
+export const adminCreateShop = (token: string, data: any) =>
+  adminFetch('/api/shops', token, { method: 'POST', body: JSON.stringify(data) });
+export const adminUpdateShop = (token: string, id: string, data: any) =>
+  adminFetch(`/api/shops/${id}`, token, { method: 'PUT', body: JSON.stringify(data) });
+export const adminDeleteShop = (token: string, id: string) =>
+  adminFetch(`/api/shops/${id}`, token, { method: 'DELETE' });
 
-// Orders
+// Warehouses
+export const adminGetWarehouses = (token: string) =>
+  adminFetch('/api/warehouses', token);
+export const adminCreateWarehouse = (token: string, data: any) =>
+  adminFetch('/api/warehouses', token, { method: 'POST', body: JSON.stringify(data) });
+export const adminUpdateWarehouse = (token: string, id: string, data: any) =>
+  adminFetch(`/api/warehouses/${id}`, token, { method: 'PUT', body: JSON.stringify(data) });
+export const adminDeleteWarehouse = (token: string, id: string) =>
+  adminFetch(`/api/warehouses/${id}`, token, { method: 'DELETE' });
 export const adminGetOrders = (token: string, shopId?: string) =>
   adminFetch(`/api/orders${shopId ? `?shopId=${shopId}` : ''}`, token);
 export const adminUpdateOrderStatus = (token: string, id: string, status: string) =>

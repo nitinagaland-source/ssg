@@ -85,7 +85,9 @@ export function AdminOrdersPage() {
                       </select>
                     </td>
                     <td className="px-4 py-3 text-xs text-[#6B6B6B]">
-                      {o.createdAt ? new Date(o.createdAt).toLocaleDateString('en-IN') : '—'}
+                      {o.createdAt
+                        ? new Date(o.createdAt._seconds ? o.createdAt._seconds * 1000 : o.createdAt).toLocaleDateString('en-IN', { day: 'numeric', month: 'short', year: 'numeric' })
+                        : '—'}
                     </td>
                     <td className="px-4 py-3 text-right">
                       <button onClick={() => setSelected(o)} className="text-xs text-blue-600 hover:underline">View</button>
