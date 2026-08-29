@@ -16,6 +16,7 @@ export const OrderSuccessPage: React.FC = () => {
   const [, setLoading] = useState(true);
 
   useEffect(() => {
+    window.scrollTo({ top: 0, left: 0, behavior: 'instant' as ScrollBehavior });
     // Fire festive confetti
     confetti({
       particleCount: 90,

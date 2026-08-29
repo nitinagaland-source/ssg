@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { useCart } from '../context/CartContext';
 import { useSelectedShop } from '../context/SelectedShopContext';
@@ -12,6 +12,10 @@ export const CartPage: React.FC = () => {
   const { selectedShop } = useSelectedShop();
   const { getCartWhatsAppUrl } = useWhatsApp();
   const navigate = useNavigate();
+
+  useEffect(() => {
+    window.scrollTo({ top: 0, left: 0, behavior: 'instant' as ScrollBehavior });
+  }, []);
 
   const totalQuantity = items.reduce((sum, i) => sum + i.quantity, 0);
   const freeShippingThreshold = 500;
