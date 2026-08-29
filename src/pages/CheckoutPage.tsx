@@ -118,6 +118,7 @@ export const CheckoutPage: React.FC = () => {
 
       clearCart();
       showToast('Order placed successfully!', 'success');
+      window.scrollTo(0, 0);
       navigate(`/order/success/${order.id}`);
     } catch (err) {
       console.error(err);
