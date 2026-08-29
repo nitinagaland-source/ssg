@@ -75,7 +75,3 @@ export const adminUpdateOrderStatus = (token: string, id: string, status: string
 // Walk-in sale
 export const adminCreateWalkinSale = (token: string, data: any) =>
   adminFetch('/api/sales/walkin', token, { method: 'POST', body: JSON.stringify(data) });
-
-// Warehouses
-export const adminGetWarehouses = (token: string) =>
-  adminFetch('/api/warehouses', token);
