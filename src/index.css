@@ -3,7 +3,7 @@
 
 @layer base {
   html {
-    scroll-behavior: smooth;
+    /* scroll-behavior: smooth; — removed: breaks SPA navigation */
     font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
     color: #0A0A0A;
     background-color: #FFFFFF;
