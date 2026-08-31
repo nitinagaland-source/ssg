@@ -3,11 +3,14 @@ import { useAdminAuth } from '../context/AdminAuthContext';
 import { adminGetProducts, adminGetCategories, adminGetShops, adminGetWarehouses, adminCreateProduct, adminUpdateProduct, adminDeleteProduct } from '../api/client';
 import { MultiImageUpload } from '../components/ImageUpload';
 
+const CLASSES = ['Nursery','LKG','UKG','Class 1','Class 2','Class 3','Class 4','Class 5','Class 6','Class 7','Class 8','Class 9','Class 10','Class 11','Class 12'];
+
 const EMPTY_PRODUCT = {
   id: '', name: '', slug: '', description: '', price: 0, mrp: 0,
   categoryId: '', schoolId: null, brand: '', sku: '', images: [],
   classes: [], isActive: true, isFeatured: false, isBestSeller: false,
   stockByShop: {}, stockByWarehouse: {},
+  specifications: [],
 };
 
 export function AdminProductsPage() {
@@ -58,11 +61,17 @@ export function AdminProductsPage() {
     const whStock: any = { ...p.stockByWarehouse };
     shops.forEach(s => { if (!(s.id in shopStock)) shopStock[s.id] = 0; });
     warehouses.forEach(w => { if (!(w.id in whStock)) whStock[w.id] = 0; });
-    setEditing({ ...p, stockByShop: shopStock, stockByWarehouse: whStock, images: p.images || [] });
+    setEditing({
+      ...p,
+      stockByShop: shopStock,
+      stockByWarehouse: whStock,
+      images: p.images || [],
+      classes: p.classes || [],
+      specifications: p.specifications || [],
+    });
   };
 
   const syncWarehouseStock = (shopId: string, qty: number) => {
-    // Find the warehouse linked to this shop
     const shop = shops.find(s => s.id === shopId);
     if (!shop?.warehouseId) return;
     setEditing((prev: any) => ({
@@ -70,6 +79,42 @@ export function AdminProductsPage() {
       stockByShop: { ...prev.stockByShop, [shopId]: qty },
       stockByWarehouse: { ...prev.stockByWarehouse, [shop.warehouseId]: qty }
     }));
+  };
+
+  // ── Specifications helpers ────────────────────────────────────────────────
+  const addSpec = () => {
+    setEditing((prev: any) => ({
+      ...prev,
+      specifications: [...(prev.specifications || []), { label: '', value: '' }]
+    }));
+  };
+
+  const updateSpec = (i: number, field: 'label' | 'value', val: string) => {
+    setEditing((prev: any) => {
+      const specs = [...(prev.specifications || [])];
+      specs[i] = { ...specs[i], [field]: val };
+      return { ...prev, specifications: specs };
+    });
+  };
+
+  const removeSpec = (i: number) => {
+    setEditing((prev: any) => ({
+      ...prev,
+      specifications: (prev.specifications || []).filter((_: any, idx: number) => idx !== i)
+    }));
+  };
+
+  // ── Classes helpers ───────────────────────────────────────────────────────
+  const toggleClass = (cls: string) => {
+    setEditing((prev: any) => {
+      const current: string[] = prev.classes || [];
+      return {
+        ...prev,
+        classes: current.includes(cls)
+          ? current.filter(c => c !== cls)
+          : [...current, cls]
+      };
+    });
   };
 
   const handleSave = async () => {
@@ -178,6 +223,7 @@ export function AdminProductsPage() {
             <div className="p-6 space-y-5 max-h-[75vh] overflow-y-auto">
               {error && <div className="bg-red-50 text-red-600 text-sm px-3 py-2 rounded-lg">{error}</div>}
 
+              {/* Name + SKU */}
               <div className="grid grid-cols-2 gap-4">
                 <div>
                   <label className="block text-xs font-semibold text-[#0A0A0A] mb-1.5">Product Name *</label>
@@ -191,12 +237,14 @@ export function AdminProductsPage() {
                 </div>
               </div>
 
+              {/* Description */}
               <div>
                 <label className="block text-xs font-semibold text-[#0A0A0A] mb-1.5">Description</label>
                 <textarea value={editing.description} onChange={e => setEditing({...editing, description: e.target.value})}
                   rows={2} className="w-full border border-[#E0E0E0] rounded-lg px-3 py-2 text-sm focus:outline-none focus:border-[#0A0A0A] resize-none" />
               </div>
 
+              {/* Price + MRP + Brand */}
               <div className="grid grid-cols-3 gap-4">
                 <div>
                   <label className="block text-xs font-semibold text-[#0A0A0A] mb-1.5">Price (₹) *</label>
@@ -215,6 +263,7 @@ export function AdminProductsPage() {
                 </div>
               </div>
 
+              {/* Category */}
               <div>
                 <label className="block text-xs font-semibold text-[#0A0A0A] mb-1.5">Category</label>
                 <select value={editing.categoryId} onChange={e => setEditing({...editing, categoryId: e.target.value})}
@@ -224,7 +273,29 @@ export function AdminProductsPage() {
                 </select>
               </div>
 
-              {/* Product Images - file upload */}
+              {/* Classes / Grades */}
+              <div>
+                <label className="block text-xs font-semibold text-[#0A0A0A] mb-1.5">Classes / Grades</label>
+                <p className="text-xs text-[#6B6B6B] mb-2">Select all grades this product applies to. Leave empty for general products.</p>
+                <div className="flex flex-wrap gap-2">
+                  {CLASSES.map(cls => (
+                    <button
+                      key={cls}
+                      type="button"
+                      onClick={() => toggleClass(cls)}
+                      className={`px-2.5 py-1 rounded-full text-xs font-semibold border transition-colors ${
+                        (editing.classes || []).includes(cls)
+                          ? 'bg-[#0A0A0A] text-white border-[#0A0A0A]'
+                          : 'bg-white text-[#6B6B6B] border-[#E0E0E0] hover:border-[#0A0A0A]'
+                      }`}
+                    >
+                      {cls}
+                    </button>
+                  ))}
+                </div>
+              </div>
+
+              {/* Images */}
               <MultiImageUpload
                 label="Product Images (upload from your device)"
                 values={editing.images || []}
@@ -232,7 +303,50 @@ export function AdminProductsPage() {
                 folder="products"
               />
 
-              {/* Stock by Shop — syncs to linked warehouse automatically */}
+              {/* Specifications */}
+              <div>
+                <div className="flex items-center justify-between mb-1.5">
+                  <label className="text-xs font-semibold text-[#0A0A0A]">Specifications</label>
+                  <button
+                    type="button"
+                    onClick={addSpec}
+                    className="text-xs text-blue-600 hover:underline font-medium"
+                  >
+                    + Add row
+                  </button>
+                </div>
+                <p className="text-xs text-[#6B6B6B] mb-2">These show in the Specifications tab on the product page. E.g. Pages → 200, Binding → Spiral</p>
+                {(editing.specifications || []).length === 0 && (
+                  <div className="text-xs text-[#9B9B9B] italic py-2">No specifications yet. Click "+ Add row" to add one.</div>
+                )}
+                <div className="space-y-2">
+                  {(editing.specifications || []).map((spec: any, i: number) => (
+                    <div key={i} className="flex items-center gap-2">
+                      <input
+                        value={spec.label}
+                        onChange={e => updateSpec(i, 'label', e.target.value)}
+                        placeholder="Label (e.g. Pages)"
+                        className="flex-1 border border-[#E0E0E0] rounded-lg px-3 py-2 text-sm focus:outline-none focus:border-[#0A0A0A]"
+                      />
+                      <input
+                        value={spec.value}
+                        onChange={e => updateSpec(i, 'value', e.target.value)}
+                        placeholder="Value (e.g. 200)"
+                        className="flex-1 border border-[#E0E0E0] rounded-lg px-3 py-2 text-sm focus:outline-none focus:border-[#0A0A0A]"
+                      />
+                      <button
+                        type="button"
+                        onClick={() => removeSpec(i)}
+                        className="text-red-400 hover:text-red-600 text-lg leading-none px-1"
+                      >
+                        ×
+                      </button>
+                    </div>
+                  ))}
+                </div>
+              </div>
+
+              {/* Stock by Shop */}
               <div>
                 <label className="block text-xs font-semibold text-[#0A0A0A] mb-1">Stock by Shop</label>
                 <p className="text-xs text-[#6B6B6B] mb-2">Setting stock for a shop auto-updates the linked warehouse too.</p>
