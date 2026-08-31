@@ -107,21 +107,11 @@ export const GsapPageRevealProvider: React.FC<{ children: React.ReactNode }> = (
   const location = useLocation();
 
   useEffect(() => {
-    // Step 1: scroll to top immediately before GSAP does anything
-    window.scrollTo(0, 0);
-    document.documentElement.scrollTop = 0;
-    document.body.scrollTop = 0;
-
-    // Step 2: kill all existing ScrollTriggers so stale ones don't fire
+    // Kill stale triggers from previous page
     ScrollTrigger.getAll().forEach((t) => t.kill());
 
-    // Step 3: wait for DOM + scroll to settle, then init animations
+    // Wait for DOM to render the new page, then init scroll animations
     const timer = setTimeout(() => {
-      // Ensure we're still at top after any browser scroll restoration
-      window.scrollTo(0, 0);
-      document.documentElement.scrollTop = 0;
-      document.body.scrollTop = 0;
-
       const ctx = gsap.context(() => {
         const pageSections = document.querySelectorAll<HTMLElement>(
           'main > div > section, main section, .gsap-section, [data-gsap-section]'
@@ -179,11 +169,9 @@ export const GsapPageRevealProvider: React.FC<{ children: React.ReactNode }> = (
       });
 
       return () => ctx.revert();
-    }, 80);
+    }, 150);
 
-    return () => {
-      clearTimeout(timer);
-    };
+    return () => clearTimeout(timer);
   }, [location.pathname, location.search]);
 
   return <>{children}</>;
