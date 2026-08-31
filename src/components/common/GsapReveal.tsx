@@ -103,78 +103,86 @@ export const GsapItem: React.FC<React.HTMLAttributes<HTMLDivElement> & { as?: Re
   );
 };
 
-/**
- * Universal Page Reveal Initializer that automatically observes page changes and triggers GSAP reveals
- * on any page with standard sections, headers, cards, grids, and hero blocks.
- */
 export const GsapPageRevealProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
   const location = useLocation();
 
   useEffect(() => {
-    // On route change, refresh ScrollTrigger and trigger smooth page entrance
-    const ctx = gsap.context(() => {
-      // Find all sections or major cards on the page that don't have explicit GsapSection
-      const pageSections = document.querySelectorAll<HTMLElement>(
-        'main > div > section, main section, .gsap-section, [data-gsap-section]'
-      );
+    // Step 1: scroll to top immediately before GSAP does anything
+    window.scrollTo(0, 0);
+    document.documentElement.scrollTop = 0;
+    document.body.scrollTop = 0;
 
-      pageSections.forEach((section, index) => {
-        // If already animated or has own trigger, skip if managed
-        if (section.getAttribute('data-gsap-initialized')) return;
-        section.setAttribute('data-gsap-initialized', 'true');
+    // Step 2: kill all existing ScrollTriggers so stale ones don't fire
+    ScrollTrigger.getAll().forEach((t) => t.kill());
 
-        const childrenToAnimate = section.querySelectorAll<HTMLElement>(
-          '.gsap-item, .gsap-child, [data-gsap-item], .product-card-3d, .shiny-solid-3d, .action-card, .pillar-card, h1, h2, h3, .section-header'
+    // Step 3: wait for DOM + scroll to settle, then init animations
+    const timer = setTimeout(() => {
+      // Ensure we're still at top after any browser scroll restoration
+      window.scrollTo(0, 0);
+      document.documentElement.scrollTop = 0;
+      document.body.scrollTop = 0;
+
+      const ctx = gsap.context(() => {
+        const pageSections = document.querySelectorAll<HTMLElement>(
+          'main > div > section, main section, .gsap-section, [data-gsap-section]'
         );
 
-        const tl = gsap.timeline({
-          scrollTrigger: {
-            trigger: section,
-            start: index === 0 ? 'top 95%' : 'top 85%',
-            toggleActions: 'play none none none',
-            once: true,
-          },
-        });
+        pageSections.forEach((section, index) => {
+          if (section.getAttribute('data-gsap-initialized')) return;
+          section.setAttribute('data-gsap-initialized', 'true');
 
-        tl.fromTo(
-          section,
-          { opacity: 0, y: 30, scale: 0.99 },
-          {
-            opacity: 1,
-            y: 0,
-            scale: 1,
-            duration: 0.6,
-            ease: 'power3.out',
-            clearProps: 'transform',
-          }
-        );
+          const childrenToAnimate = section.querySelectorAll<HTMLElement>(
+            '.gsap-item, .gsap-child, [data-gsap-item], .product-card-3d, .shiny-solid-3d, .action-card, .pillar-card, h1, h2, h3, .section-header'
+          );
 
-        if (childrenToAnimate.length > 0) {
+          const tl = gsap.timeline({
+            scrollTrigger: {
+              trigger: section,
+              start: index === 0 ? 'top 95%' : 'top 85%',
+              toggleActions: 'play none none none',
+              once: true,
+            },
+          });
+
           tl.fromTo(
-            childrenToAnimate,
-            { opacity: 0, y: 20, scale: 0.97 },
+            section,
+            { opacity: 0, y: 30, scale: 0.99 },
             {
               opacity: 1,
               y: 0,
               scale: 1,
-              duration: 0.5,
-              stagger: 0.06,
-              ease: 'power2.out',
+              duration: 0.6,
+              ease: 'power3.out',
               clearProps: 'transform',
-            },
-            '-=0.4'
+            }
           );
-        }
-      });
-    });
 
-    const timer = setTimeout(() => {
-      ScrollTrigger.refresh();
-    }, 100);
+          if (childrenToAnimate.length > 0) {
+            tl.fromTo(
+              childrenToAnimate,
+              { opacity: 0, y: 20, scale: 0.97 },
+              {
+                opacity: 1,
+                y: 0,
+                scale: 1,
+                duration: 0.5,
+                stagger: 0.06,
+                ease: 'power2.out',
+                clearProps: 'transform',
+              },
+              '-=0.4'
+            );
+          }
+        });
+
+        ScrollTrigger.refresh();
+      });
+
+      return () => ctx.revert();
+    }, 80);
 
     return () => {
       clearTimeout(timer);
-      ctx.revert();
     };
   }, [location.pathname, location.search]);
 
