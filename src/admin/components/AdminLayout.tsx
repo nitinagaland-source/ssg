@@ -22,7 +22,7 @@ export function AdminLayout({ children }: { children: React.ReactNode }) {
       {/* Sidebar */}
       <aside className={`fixed inset-y-0 left-0 z-50 w-56 bg-[#0A0A0A] flex flex-col transform transition-transform duration-200 ${sidebarOpen ? 'translate-x-0' : '-translate-x-full'} lg:translate-x-0 lg:static lg:flex`}>
         <div className="p-5 border-b border-white/10">
-          <div className="text-white font-black text-xl">SSG</div>
+          <div className="text-white font-black text-xl">STUDENT GALLRY (NALBARI ) C/O SARASWATI</div>
           <div className="text-white/40 text-xs mt-0.5">Admin Dashboard</div>
         </div>
         <nav className="flex-1 p-3 space-y-0.5 overflow-y-auto">
@@ -68,7 +68,7 @@ export function AdminLayout({ children }: { children: React.ReactNode }) {
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
             </svg>
           </button>
-          <span className="font-bold text-[#0A0A0A]">SSG Admin</span>
+          <span className="font-bold text-[#0A0A0A]">STUDENT GALLRY (NALBARI ) C/O SARASWATI Admin</span>
         </header>
 
         {/* Content */}

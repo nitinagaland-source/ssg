@@ -58,7 +58,7 @@ export function AdminLoginPage() {
 
         {/* ── LOGO ─────────────────────────────────────────────────────── */}
         <div className="text-center mb-8">
-          <div className="text-3xl font-black text-[#0A0A0A] mb-1">SSG</div>
+          <div className="text-3xl font-black text-[#0A0A0A] mb-1">STUDENT GALLRY (NALBARI ) C/O SARASWATI</div>
           <div className="text-sm text-[#6B6B6B] font-medium">Admin Dashboard</div>
         </div>
 

@@ -30,7 +30,7 @@ export const Footer: React.FC = () => {
                 <span>Guwahati&apos;s Trusted Academic Landmark</span>
               </div>
               <h2 className="text-2xl sm:text-3xl lg:text-4xl font-extrabold font-display tracking-tight text-white">
-                Saraswati Student Gallery
+                STUDENT GALLRY (NALBARI ) C/O SARASWATI
               </h2>
               <p className="text-xs sm:text-sm text-neutral-300 font-body leading-relaxed">
                 Guwahati&apos;s premier educational bookstore network — providing official school session booklists, tailored stationery bundles, uniform apparel, and verified academic supplies across Assam.
@@ -244,7 +244,7 @@ export const Footer: React.FC = () => {
 
         {/* Bottom Bar */}
         <div className="border-t border-purple-500/15 pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-neutral-400">
-          <p>© 2026 Saraswati Student Gallery. All rights reserved.</p>
+          <p>© 2026 STUDENT GALLRY (NALBARI ) C/O SARASWATI. All rights reserved.</p>
           <div className="flex flex-wrap items-center gap-4 sm:gap-6 text-[11px] text-neutral-400">
             <span>Guwahati, Assam</span>
             <span>•</span>
