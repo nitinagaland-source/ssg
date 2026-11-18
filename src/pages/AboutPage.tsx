@@ -15,7 +15,7 @@ export const AboutPage: React.FC = () => {
           Serving students across Guwahati with care and precision.
         </h1>
         <p className="text-lg sm:text-xl font-serif-accent text-[#6B6B6B] leading-relaxed">
-          Founded in Guwahati, STUDENT GALLRY (NALBARI ) C/O SARASWATI was born to solve a real family headache: running from store to store every February trying to find syllabus books and fitted school uniforms.
+          Founded in Guwahati, STUDENT GALLERY (NALBARI ) C/O SARASWATI was born to solve a real family headache: running from store to store every February trying to find syllabus books and fitted school uniforms.
         </p>
       </div>
 

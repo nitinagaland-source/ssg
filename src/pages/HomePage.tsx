@@ -213,7 +213,7 @@ export const HomePage: React.FC = () => {
         <div className="absolute inset-0 z-0 overflow-hidden">
           <img
             src="https://i.ibb.co/Jj91CM1F/f08b42ac-ae96-4c2e-9025-f7a3396098b8.webp"
-            alt="STUDENT GALLRY (NALBARI ) C/O SARASWATI School Collection"
+            alt="STUDENT GALLERY (NALBARI ) C/O SARASWATI School Collection"
             referrerPolicy="no-referrer"
             className="w-full h-full object-cover object-top sm:object-[right_top] md:object-top filter brightness-[0.90] contrast-[1.04]"
           />
@@ -346,7 +346,7 @@ export const HomePage: React.FC = () => {
             <div className="gsap-item mt-5 sm:mt-7 flex items-center gap-3">
               <div className="h-[1.5px] w-8 sm:w-16 bg-gradient-to-r from-transparent via-white/70 to-white" />
               <span className="text-[10px] sm:text-xs font-black uppercase tracking-[0.25em] text-white drop-shadow-[0_2px_4px_rgba(0,0,0,0.5)]">
-                STUDENT GALLRY (NALBARI ) C/O SARASWATI • Est. Guwahati
+                STUDENT GALLERY (NALBARI ) C/O SARASWATI • Est. Guwahati
               </span>
               <div className="h-[1.5px] w-8 sm:w-16 bg-gradient-to-l from-transparent via-white/70 to-white" />
             </div>

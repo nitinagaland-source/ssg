@@ -41,7 +41,7 @@ export const Header: React.FC = () => {
                 SSG
               </span>
               <span className="hidden md:inline text-xs font-semibold text-purple-900/60 tracking-tight uppercase border-l border-purple-200 pl-2">
-                STUDENT GALLRY (NALBARI ) C/O SARASWATI
+                STUDENT GALLERY (NALBARI ) C/O SARASWATI
               </span>
             </Link>
           </div>
